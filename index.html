@@ -77,6 +77,10 @@
       </p>
     </div>
   </body>
+  <script src="noise.js"></script>
+  <script src="perlin-noise-classical.js"></script>
+  <script src="perlin-noise-simplex.js"></script>
+
 
   <script>
     // Source palette: https://twitter.com/AlexCristache/status/1738610343499157872
@@ -101,17 +105,22 @@
     const NIGHT_COLOR = colorPalette.NocturnalExpedition;
     const NIGHT_BALL_COLOR = colorPalette.MysticMint;
 
-    const SQUARE_SIZE = 25;
+    const SQUARE_SIZE = 16;
 
     const numSquaresX = canvas.width / SQUARE_SIZE;
     const numSquaresY = canvas.height / SQUARE_SIZE;
 
     let squares = [];
 
+    var noise = new Noise(Math.random());
+    var noiseScale = 8;
+
     for (let i = 0; i < numSquaresX; i++) {
       squares[i] = [];
       for (let j = 0; j < numSquaresY; j++) {
-        squares[i][j] = i < numSquaresX / 2 ? DAY_COLOR : NIGHT_COLOR;
+        squares[i][j] = 
+          noise.perlin2(i/noiseScale, j/noiseScale) > 0 
+          ? DAY_COLOR : NIGHT_COLOR;
       }
     }
 
