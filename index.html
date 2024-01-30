@@ -105,7 +105,7 @@
     const NIGHT_COLOR = colorPalette.NocturnalExpedition;
     const NIGHT_BALL_COLOR = colorPalette.MysticMint;
 
-    const SQUARE_SIZE = 16;
+    const SQUARE_SIZE = 25;
 
     const numSquaresX = canvas.width / SQUARE_SIZE;
     const numSquaresY = canvas.height / SQUARE_SIZE;
@@ -113,7 +113,7 @@
     let squares = [];
 
     var noise = new Noise(Math.random());
-    var noiseScale = 8;
+    var noiseScale = 6;
 
     for (let i = 0; i < numSquaresX; i++) {
       squares[i] = [];
